@@ -1,0 +1,1040 @@
+{
+    "contractName": "SentinelPolicy",
+    "abi": [
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "user",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "enum SentinelPolicy.SecurityProfile",
+                    "name": "profile",
+                    "type": "uint8"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "bool",
+                    "name": "blockUnlimitedApproval",
+                    "type": "bool"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "bool",
+                    "name": "warnUknownContract",
+                    "type": "bool"
+                }
+            ],
+            "name": "PolicyUpdated",
+            "type": "event"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "user",
+                    "type": "address"
+                }
+            ],
+            "name": "getPolicy",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "enum SentinelPolicy.SecurityProfile",
+                            "name": "profile",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "blockUnlimitedApproval",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "warnUknownContract",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct SentinelPolicy.Policy",
+                    "name": "",
+                    "type": "tuple"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "enum SentinelPolicy.SecurityProfile",
+                    "name": "profile",
+                    "type": "uint8"
+                },
+                {
+                    "internalType": "bool",
+                    "name": "blockUnlimitedApproval",
+                    "type": "bool"
+                },
+                {
+                    "internalType": "bool",
+                    "name": "warnUknownContract",
+                    "type": "bool"
+                }
+            ],
+            "name": "setPolicy",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.36+commit.8a079791\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"enum SentinelPolicy.SecurityProfile\",\"name\":\"profile\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"blockUnlimitedApproval\",\"type\":\"bool\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"warnUknownContract\",\"type\":\"bool\"}],\"name\":\"PolicyUpdated\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"getPolicy\",\"outputs\":[{\"components\":[{\"internalType\":\"enum SentinelPolicy.SecurityProfile\",\"name\":\"profile\",\"type\":\"uint8\"},{\"internalType\":\"bool\",\"name\":\"blockUnlimitedApproval\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"warnUknownContract\",\"type\":\"bool\"}],\"internalType\":\"struct SentinelPolicy.Policy\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enum SentinelPolicy.SecurityProfile\",\"name\":\"profile\",\"type\":\"uint8\"},{\"internalType\":\"bool\",\"name\":\"blockUnlimitedApproval\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"warnUknownContract\",\"type\":\"bool\"}],\"name\":\"setPolicy\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/abas/Project - Fardan Arbaz/sentinel-project/contracts/src/SentinelPolicy.sol\":\"SentinelPolicy\"},\"evmVersion\":\"osaka\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"/home/abas/Project - Fardan Arbaz/sentinel-project/contracts/src/SentinelPolicy.sol\":{\"keccak256\":\"0x35462bba130c8656266025b3c7948051a0d78b84178427e7b8a4e75faf4302cf\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://aa480a3fc9f93a29cc3e7c8045590f5a57e82b8e726415a9f91cd049cc685b15\",\"dweb:/ipfs/Qme4q7682cjQ5w4FvhT6XgCbb3NDFfWtfS8oFy5d2ozxpx\"]}},\"version\":1}",
+    "bytecode": "6080806040523460155761023e908161001a8239f35b5f80fdfe60806040526004361015610011575f80fd5b5f3560e01c80633791dc6a1461011e57637ecf82711461002f575f80fd5b3461011a57606036600319011261011a57600435600381101561011a5760243580151580910361011a576044359081151580920361011a5761006f6101c8565b61007984826101fc565b6020810182815260408201848152335f525f60205260405f2092519160038310156101065760ff62ff000061ff0086549351151560081b169351151560101b1693169062ffffff191617171790556100d460405180946101bb565b602083015260408201527f289da267676c0a16bcba558508db63dc4678d158fb673f766059ddd3f072178360603392a2005b634e487b7160e01b5f52602160045260245ffd5b5f80fd5b3461011a57602036600319011261011a576004356001600160a01b0381169081900361011a575f604061014f6101c8565b82815282602082015201525f525f602052606060405f2061016e6101c8565b905461017d60ff8216836101fc565b6020820160ff8260081c161515815260ff604084019260101c16151582526101a96040518094516101bb565b51151560208301525115156040820152f35b9060038210156101065752565b604051906060820182811067ffffffffffffffff8211176101e857604052565b634e487b7160e01b5f52604160045260245ffd5b6003821015610106575256fea2646970667358221220bd5fc96f91b0cd518ce4136bf34a64d0540723be9660498a6b801225818dbb9364736f6c63430008240033",
+    "deployedBytecode": "60806040526004361015610011575f80fd5b5f3560e01c80633791dc6a1461011e57637ecf82711461002f575f80fd5b3461011a57606036600319011261011a57600435600381101561011a5760243580151580910361011a576044359081151580920361011a5761006f6101c8565b61007984826101fc565b6020810182815260408201848152335f525f60205260405f2092519160038310156101065760ff62ff000061ff0086549351151560081b169351151560101b1693169062ffffff191617171790556100d460405180946101bb565b602083015260408201527f289da267676c0a16bcba558508db63dc4678d158fb673f766059ddd3f072178360603392a2005b634e487b7160e01b5f52602160045260245ffd5b5f80fd5b3461011a57602036600319011261011a576004356001600160a01b0381169081900361011a575f604061014f6101c8565b82815282602082015201525f525f602052606060405f2061016e6101c8565b905461017d60ff8216836101fc565b6020820160ff8260081c161515815260ff604084019260101c16151582526101a96040518094516101bb565b51151560208301525115156040820152f35b9060038210156101065752565b604051906060820182811067ffffffffffffffff8211176101e857604052565b634e487b7160e01b5f52604160045260245ffd5b6003821015610106575256fea2646970667358221220bd5fc96f91b0cd518ce4136bf34a64d0540723be9660498a6b801225818dbb9364736f6c63430008240033",
+    "sourceMap": "65:850:20:-:0;;;;;;;;;;;;;;;;;",
+    "deployedSourceMap": "65:850:20:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;65:850:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;639:59;;;;:::i;:::-;65:850;639:59;;65:850;;;;639:59;;65:850;;;625:10;65:850;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;713:78;65:850;625:10;713:78;;65:850;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;65:850:20;;;;;;-1:-1:-1;;;;;65:850:20;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;:::o;:::-;;;;-1:-1:-1;65:850:20;;;;;-1:-1:-1;65:850:20;;;;;;;;;:::o",
+    "sourcePath": "/home/abas/Project - Fardan Arbaz/sentinel-project/contracts/src/SentinelPolicy.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.36+commit.8a079791"
+    },
+    "ast": {
+        "absolutePath": "/home/abas/Project - Fardan Arbaz/sentinel-project/contracts/src/SentinelPolicy.sol",
+        "exportedSymbols": {
+            "SentinelPolicy": [
+                41060
+            ]
+        },
+        "id": 41061,
+        "license": "UNLICENSED",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 40988,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".20"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "39:24:20"
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "SentinelPolicy",
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 41060,
+                "linearizedBaseContracts": [
+                    41060
+                ],
+                "name": "SentinelPolicy",
+                "nameLocation": "74:14:20",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "canonicalName": "SentinelPolicy.SecurityProfile",
+                        "id": 40992,
+                        "members": [
+                            {
+                                "id": 40989,
+                                "name": "Standard",
+                                "nameLocation": "126:8:20",
+                                "nodeType": "EnumValue",
+                                "src": "126:8:20"
+                            },
+                            {
+                                "id": 40990,
+                                "name": "Strict",
+                                "nameLocation": "144:6:20",
+                                "nodeType": "EnumValue",
+                                "src": "144:6:20"
+                            },
+                            {
+                                "id": 40991,
+                                "name": "Custom",
+                                "nameLocation": "160:6:20",
+                                "nodeType": "EnumValue",
+                                "src": "160:6:20"
+                            }
+                        ],
+                        "name": "SecurityProfile",
+                        "nameLocation": "100:15:20",
+                        "nodeType": "EnumDefinition",
+                        "src": "95:77:20"
+                    },
+                    {
+                        "canonicalName": "SentinelPolicy.Policy",
+                        "id": 41000,
+                        "members": [
+                            {
+                                "constant": false,
+                                "id": 40995,
+                                "mutability": "mutable",
+                                "name": "profile",
+                                "nameLocation": "218:7:20",
+                                "nodeType": "VariableDeclaration",
+                                "scope": 41000,
+                                "src": "202:23:20",
+                                "stateVariable": false,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_enum$_SecurityProfile_$40992",
+                                    "typeString": "enum SentinelPolicy.SecurityProfile"
+                                },
+                                "typeName": {
+                                    "id": 40994,
+                                    "nodeType": "UserDefinedTypeName",
+                                    "pathNode": {
+                                        "id": 40993,
+                                        "name": "SecurityProfile",
+                                        "nameLocations": [
+                                            "202:15:20"
+                                        ],
+                                        "nodeType": "IdentifierPath",
+                                        "referencedDeclaration": 40992,
+                                        "src": "202:15:20"
+                                    },
+                                    "referencedDeclaration": 40992,
+                                    "src": "202:15:20",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_enum$_SecurityProfile_$40992",
+                                        "typeString": "enum SentinelPolicy.SecurityProfile"
+                                    }
+                                },
+                                "visibility": "internal"
+                            },
+                            {
+                                "constant": false,
+                                "id": 40997,
+                                "mutability": "mutable",
+                                "name": "blockUnlimitedApproval",
+                                "nameLocation": "240:22:20",
+                                "nodeType": "VariableDeclaration",
+                                "scope": 41000,
+                                "src": "235:27:20",
+                                "stateVariable": false,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_bool",
+                                    "typeString": "bool"
+                                },
+                                "typeName": {
+                                    "id": 40996,
+                                    "name": "bool",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "235:4:20",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    }
+                                },
+                                "visibility": "internal"
+                            },
+                            {
+                                "constant": false,
+                                "id": 40999,
+                                "mutability": "mutable",
+                                "name": "warnUknownContract",
+                                "nameLocation": "277:18:20",
+                                "nodeType": "VariableDeclaration",
+                                "scope": 41000,
+                                "src": "272:23:20",
+                                "stateVariable": false,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_bool",
+                                    "typeString": "bool"
+                                },
+                                "typeName": {
+                                    "id": 40998,
+                                    "name": "bool",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "272:4:20",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    }
+                                },
+                                "visibility": "internal"
+                            }
+                        ],
+                        "name": "Policy",
+                        "nameLocation": "185:6:20",
+                        "nodeType": "StructDefinition",
+                        "scope": 41060,
+                        "src": "178:124:20",
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "id": 41005,
+                        "mutability": "mutable",
+                        "name": "policies",
+                        "nameLocation": "343:8:20",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 41060,
+                        "src": "308:43:20",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Policy_$41000_storage_$",
+                            "typeString": "mapping(address => struct SentinelPolicy.Policy)"
+                        },
+                        "typeName": {
+                            "id": 41004,
+                            "keyName": "",
+                            "keyNameLocation": "-1:-1:-1",
+                            "keyType": {
+                                "id": 41001,
+                                "name": "address",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "316:7:20",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                }
+                            },
+                            "nodeType": "Mapping",
+                            "src": "308:26:20",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Policy_$41000_storage_$",
+                                "typeString": "mapping(address => struct SentinelPolicy.Policy)"
+                            },
+                            "valueName": "",
+                            "valueNameLocation": "-1:-1:-1",
+                            "valueType": {
+                                "id": 41003,
+                                "nodeType": "UserDefinedTypeName",
+                                "pathNode": {
+                                    "id": 41002,
+                                    "name": "Policy",
+                                    "nameLocations": [
+                                        "327:6:20"
+                                    ],
+                                    "nodeType": "IdentifierPath",
+                                    "referencedDeclaration": 41000,
+                                    "src": "327:6:20"
+                                },
+                                "referencedDeclaration": 41000,
+                                "src": "327:6:20",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Policy_$41000_storage_ptr",
+                                    "typeString": "struct SentinelPolicy.Policy"
+                                }
+                            }
+                        },
+                        "visibility": "private"
+                    },
+                    {
+                        "anonymous": false,
+                        "eventSelector": "289da267676c0a16bcba558508db63dc4678d158fb673f766059ddd3f0721783",
+                        "id": 41016,
+                        "name": "PolicyUpdated",
+                        "nameLocation": "364:13:20",
+                        "nodeType": "EventDefinition",
+                        "parameters": {
+                            "id": 41015,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 41007,
+                                    "indexed": true,
+                                    "mutability": "mutable",
+                                    "name": "user",
+                                    "nameLocation": "403:4:20",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 41016,
+                                    "src": "387:20:20",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 41006,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "387:7:20",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 41010,
+                                    "indexed": false,
+                                    "mutability": "mutable",
+                                    "name": "profile",
+                                    "nameLocation": "425:7:20",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 41016,
+                                    "src": "409:23:20",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_enum$_SecurityProfile_$40992",
+                                        "typeString": "enum SentinelPolicy.SecurityProfile"
+                                    },
+                                    "typeName": {
+                                        "id": 41009,
+                                        "nodeType": "UserDefinedTypeName",
+                                        "pathNode": {
+                                            "id": 41008,
+                                            "name": "SecurityProfile",
+                                            "nameLocations": [
+                                                "409:15:20"
+                                            ],
+                                            "nodeType": "IdentifierPath",
+                                            "referencedDeclaration": 40992,
+                                            "src": "409:15:20"
+                                        },
+                                        "referencedDeclaration": 40992,
+                                        "src": "409:15:20",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_enum$_SecurityProfile_$40992",
+                                            "typeString": "enum SentinelPolicy.SecurityProfile"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 41012,
+                                    "indexed": false,
+                                    "mutability": "mutable",
+                                    "name": "blockUnlimitedApproval",
+                                    "nameLocation": "439:22:20",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 41016,
+                                    "src": "434:27:20",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    },
+                                    "typeName": {
+                                        "id": 41011,
+                                        "name": "bool",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "434:4:20",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 41014,
+                                    "indexed": false,
+                                    "mutability": "mutable",
+                                    "name": "warnUknownContract",
+                                    "nameLocation": "468:18:20",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 41016,
+                                    "src": "463:23:20",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    },
+                                    "typeName": {
+                                        "id": 41013,
+                                        "name": "bool",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "463:4:20",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "377:115:20"
+                        },
+                        "src": "358:135:20"
+                    },
+                    {
+                        "body": {
+                            "id": 41045,
+                            "nodeType": "Block",
+                            "src": "606:192:20",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "id": 41035,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "baseExpression": {
+                                                "id": 41026,
+                                                "name": "policies",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 41005,
+                                                "src": "616:8:20",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Policy_$41000_storage_$",
+                                                    "typeString": "mapping(address => struct SentinelPolicy.Policy storage ref)"
+                                                }
+                                            },
+                                            "id": 41029,
+                                            "indexExpression": {
+                                                "expression": {
+                                                    "id": 41027,
+                                                    "name": "msg",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": -15,
+                                                    "src": "625:3:20",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_magic_message",
+                                                        "typeString": "msg"
+                                                    }
+                                                },
+                                                "id": 41028,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "memberLocation": "629:6:20",
+                                                "memberName": "sender",
+                                                "nodeType": "MemberAccess",
+                                                "src": "625:10:20",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": true,
+                                            "nodeType": "IndexAccess",
+                                            "src": "616:20:20",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_Policy_$41000_storage",
+                                                "typeString": "struct SentinelPolicy.Policy storage ref"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "arguments": [
+                                                {
+                                                    "id": 41031,
+                                                    "name": "profile",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 41019,
+                                                    "src": "646:7:20",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_enum$_SecurityProfile_$40992",
+                                                        "typeString": "enum SentinelPolicy.SecurityProfile"
+                                                    }
+                                                },
+                                                {
+                                                    "id": 41032,
+                                                    "name": "blockUnlimitedApproval",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 41021,
+                                                    "src": "655:22:20",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_bool",
+                                                        "typeString": "bool"
+                                                    }
+                                                },
+                                                {
+                                                    "id": 41033,
+                                                    "name": "warnUknownContract",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 41023,
+                                                    "src": "679:18:20",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_bool",
+                                                        "typeString": "bool"
+                                                    }
+                                                }
+                                            ],
+                                            "expression": {
+                                                "argumentTypes": [
+                                                    {
+                                                        "typeIdentifier": "t_enum$_SecurityProfile_$40992",
+                                                        "typeString": "enum SentinelPolicy.SecurityProfile"
+                                                    },
+                                                    {
+                                                        "typeIdentifier": "t_bool",
+                                                        "typeString": "bool"
+                                                    },
+                                                    {
+                                                        "typeIdentifier": "t_bool",
+                                                        "typeString": "bool"
+                                                    }
+                                                ],
+                                                "id": 41030,
+                                                "name": "Policy",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 41000,
+                                                "src": "639:6:20",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_type$_t_struct$_Policy_$41000_storage_ptr_$",
+                                                    "typeString": "type(struct SentinelPolicy.Policy storage pointer)"
+                                                }
+                                            },
+                                            "id": 41034,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "kind": "structConstructorCall",
+                                            "lValueRequested": false,
+                                            "nameLocations": [],
+                                            "names": [],
+                                            "nodeType": "FunctionCall",
+                                            "src": "639:59:20",
+                                            "tryCall": false,
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_Policy_$41000_memory_ptr",
+                                                "typeString": "struct SentinelPolicy.Policy memory"
+                                            }
+                                        },
+                                        "src": "616:82:20",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Policy_$41000_storage",
+                                            "typeString": "struct SentinelPolicy.Policy storage ref"
+                                        }
+                                    },
+                                    "id": 41036,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "616:82:20"
+                                },
+                                {
+                                    "eventCall": {
+                                        "arguments": [
+                                            {
+                                                "expression": {
+                                                    "id": 41038,
+                                                    "name": "msg",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": -15,
+                                                    "src": "727:3:20",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_magic_message",
+                                                        "typeString": "msg"
+                                                    }
+                                                },
+                                                "id": 41039,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "memberLocation": "731:6:20",
+                                                "memberName": "sender",
+                                                "nodeType": "MemberAccess",
+                                                "src": "727:10:20",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            {
+                                                "id": 41040,
+                                                "name": "profile",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 41019,
+                                                "src": "739:7:20",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_enum$_SecurityProfile_$40992",
+                                                    "typeString": "enum SentinelPolicy.SecurityProfile"
+                                                }
+                                            },
+                                            {
+                                                "id": 41041,
+                                                "name": "blockUnlimitedApproval",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 41021,
+                                                "src": "748:22:20",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "id": 41042,
+                                                "name": "warnUknownContract",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 41023,
+                                                "src": "772:18:20",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_enum$_SecurityProfile_$40992",
+                                                    "typeString": "enum SentinelPolicy.SecurityProfile"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            ],
+                                            "id": 41037,
+                                            "name": "PolicyUpdated",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 41016,
+                                            "src": "713:13:20",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_enum$_SecurityProfile_$40992_$_t_bool_$_t_bool_$returns$__$",
+                                                "typeString": "function (address,enum SentinelPolicy.SecurityProfile,bool,bool)"
+                                            }
+                                        },
+                                        "id": 41043,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "713:78:20",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 41044,
+                                    "nodeType": "EmitStatement",
+                                    "src": "708:83:20"
+                                }
+                            ]
+                        },
+                        "functionSelector": "7ecf8271",
+                        "id": 41046,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "setPolicy",
+                        "nameLocation": "508:9:20",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 41024,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 41019,
+                                    "mutability": "mutable",
+                                    "name": "profile",
+                                    "nameLocation": "534:7:20",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 41046,
+                                    "src": "518:23:20",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_enum$_SecurityProfile_$40992",
+                                        "typeString": "enum SentinelPolicy.SecurityProfile"
+                                    },
+                                    "typeName": {
+                                        "id": 41018,
+                                        "nodeType": "UserDefinedTypeName",
+                                        "pathNode": {
+                                            "id": 41017,
+                                            "name": "SecurityProfile",
+                                            "nameLocations": [
+                                                "518:15:20"
+                                            ],
+                                            "nodeType": "IdentifierPath",
+                                            "referencedDeclaration": 40992,
+                                            "src": "518:15:20"
+                                        },
+                                        "referencedDeclaration": 40992,
+                                        "src": "518:15:20",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_enum$_SecurityProfile_$40992",
+                                            "typeString": "enum SentinelPolicy.SecurityProfile"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 41021,
+                                    "mutability": "mutable",
+                                    "name": "blockUnlimitedApproval",
+                                    "nameLocation": "548:22:20",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 41046,
+                                    "src": "543:27:20",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    },
+                                    "typeName": {
+                                        "id": 41020,
+                                        "name": "bool",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "543:4:20",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 41023,
+                                    "mutability": "mutable",
+                                    "name": "warnUknownContract",
+                                    "nameLocation": "577:18:20",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 41046,
+                                    "src": "572:23:20",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    },
+                                    "typeName": {
+                                        "id": 41022,
+                                        "name": "bool",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "572:4:20",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "517:79:20"
+                        },
+                        "returnParameters": {
+                            "id": 41025,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "606:0:20"
+                        },
+                        "scope": 41060,
+                        "src": "499:299:20",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "body": {
+                            "id": 41058,
+                            "nodeType": "Block",
+                            "src": "875:38:20",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "baseExpression": {
+                                            "id": 41054,
+                                            "name": "policies",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 41005,
+                                            "src": "892:8:20",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Policy_$41000_storage_$",
+                                                "typeString": "mapping(address => struct SentinelPolicy.Policy storage ref)"
+                                            }
+                                        },
+                                        "id": 41056,
+                                        "indexExpression": {
+                                            "id": 41055,
+                                            "name": "user",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 41048,
+                                            "src": "901:4:20",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "isConstant": false,
+                                        "isLValue": true,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "nodeType": "IndexAccess",
+                                        "src": "892:14:20",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Policy_$41000_storage",
+                                            "typeString": "struct SentinelPolicy.Policy storage ref"
+                                        }
+                                    },
+                                    "functionReturnParameters": 41053,
+                                    "id": 41057,
+                                    "nodeType": "Return",
+                                    "src": "885:21:20"
+                                }
+                            ]
+                        },
+                        "functionSelector": "3791dc6a",
+                        "id": 41059,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "getPolicy",
+                        "nameLocation": "813:9:20",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 41049,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 41048,
+                                    "mutability": "mutable",
+                                    "name": "user",
+                                    "nameLocation": "831:4:20",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 41059,
+                                    "src": "823:12:20",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 41047,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "823:7:20",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "822:14:20"
+                        },
+                        "returnParameters": {
+                            "id": 41053,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 41052,
+                                    "mutability": "mutable",
+                                    "name": "",
+                                    "nameLocation": "-1:-1:-1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 41059,
+                                    "src": "860:13:20",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Policy_$41000_memory_ptr",
+                                        "typeString": "struct SentinelPolicy.Policy"
+                                    },
+                                    "typeName": {
+                                        "id": 41051,
+                                        "nodeType": "UserDefinedTypeName",
+                                        "pathNode": {
+                                            "id": 41050,
+                                            "name": "Policy",
+                                            "nameLocations": [
+                                                "860:6:20"
+                                            ],
+                                            "nodeType": "IdentifierPath",
+                                            "referencedDeclaration": 41000,
+                                            "src": "860:6:20"
+                                        },
+                                        "referencedDeclaration": 41000,
+                                        "src": "860:6:20",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Policy_$41000_storage_ptr",
+                                            "typeString": "struct SentinelPolicy.Policy"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "859:15:20"
+                        },
+                        "scope": 41060,
+                        "src": "804:109:20",
+                        "stateMutability": "view",
+                        "virtual": false,
+                        "visibility": "external"
+                    }
+                ],
+                "scope": 41061,
+                "src": "65:850:20",
+                "usedErrors": [],
+                "usedEvents": [
+                    41016
+                ]
+            }
+        ],
+        "src": "39:877:20"
+    },
+    "functionHashes": {
+        "getPolicy(address)": "3791dc6a",
+        "setPolicy(uint8,bool,bool)": "7ecf8271"
+    },
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "114800",
+            "executionCost": "165",
+            "totalCost": "114965"
+        },
+        "external": {
+            "getPolicy(address)": "infinite",
+            "setPolicy(uint8,bool,bool)": "26821"
+        }
+    }
+}

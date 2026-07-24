@@ -1,0 +1,5 @@
+CounterTest:testFuzz_SetNumber(uint256) (runs: 256, μ: 27345, ~: 29289)
+CounterTest:test_Increment() (gas: 28783)
+SentinelTest:test_Gas_SetPolicy() (gas: 36982)
+SentinelTest:test_SetPolicyEmitsProfileUpdatedEvent() (gas: 40682)
+SentinelTest:test_SetPolicy_IsolatedPerUser() (gas: 48653)
